@@ -7,9 +7,26 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
-  <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-  <script type="text/javascript" src="scripts/scroll.js"></script>
+  <script src="scripts/jquery-3.2.1.min.js"></script>
+  <script src="scripts/bootstrap.min.js"></script>
+  <script>
+  $(document).ready(function() {
+	  // scroll to section
+	  $("#mainNav ul li a[href^='#']").click(function(e) {
+	    // prevent default anchor click behavior
+	    e.preventDefault();
+	    // store hash
+	    var hash = this.hash;
+	    // animate
+	    $('html, body').animate({
+	      scrollTop: $(hash).offset().top - 100
+	    }, 1000, function() {
+	      // when done, add hash to url
+	      // (default click behaviour)
+	      window.location.hash = hash;
+	    });
+	  });
+	});</script>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="110">
   <nav class="navbar navbar-inverse navbar-fixed-top ">
